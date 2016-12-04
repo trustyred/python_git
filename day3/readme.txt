@@ -50,4 +50,34 @@ hash=hashlib.md5		#选择hash的md5加密
 hash.update('abcd')		#选择加密的字符串
 print hash.hexdigest()	#以16进制的形式打印出来。
 
+6.3(重点)
+序列化和json
+  pickle是python程序之间交互使用的一种格式，几乎可以序列化python中所有的数据结构，但pickle对人读是很不友好的。
+  json是基本所有语言之间的序列化格式，但对python只能序列化基本的数据结构，json可读性好。
+import pickle
+l=[1,2,3,4]
+dumped=pickle.dumps(l)		#在程序中的序列化
+loaded=pickle.loads(dumped)	#在程序中的反序列化
 
+l1=[4,5,6,7]
+pickle.dump(l1,'d:\\a.txt')		#序列化的结果写入文件
+pickle.load(open('d:\\a.txt'))	#从文件中读取并反序列化成pyton中的数据结构
+
+6.4re模块
+re.match('\w+','abcde123abc')	#match是包含开头的匹配，如果没有匹配到就返回none
+re.search('\w+','67sdhjkk')		#search是全文匹配，只要找到一个就返回
+re.findall('\w','asas')			#findall是找到全部的正则匹配到的串
+r=re.complie('\d+')				#将你自己写好的正则传入上面三个函数时，他们都要编译一遍你的正则表达式，但是当调用函数次数很多的时候，每次都要编译一遍是很低效率的，你自己先编译一遍，将编译后的正则表达式传入就会快很多了。
+re.group()						#将匹配到的一律返回
+re.groups()						#只返回匹配到的组
+
+6.5time模块
+time.time()						#返回时间戳形式的时间,并且是当地时间
+time.mktime(time.time())		#将一个结构化时间转化成时间戳时间
+
+time.gmtime()					#返回一个UTC的结构化时间
+time.localtime()				#返回本地的结构化时间
+time.strptime('2014-11-11','%Y-%m-%d') #将一个自己输入的字符串时间转化成为结构化时间
+time.strftime('%Y-%m-%d')		#默认返回的是本地时间
+
+结构化时间是时间可以转化为其他任何其他形式的时间，想从时间戳转化成字符串需要先转化成结构化时间。
