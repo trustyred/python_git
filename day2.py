@@ -8,3 +8,13 @@ for i in range(l.count('2')):
 	aim=new_list.index('2')
 	first +=aim+1
 	print first
+	
+#方法2
+l=['hello', 'world', 'mo', 'dong', '1', '2', '2', '2', '2', '2', '32', 'dad']
+first=0
+for i in range(l.count('2')):
+	if first==0:
+		first=l.index('2')
+	else :
+		first=l.index('2',first+1)
+	print first
