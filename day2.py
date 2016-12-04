@@ -18,3 +18,18 @@ for i in range(l.count('2')):
 	else :
 		first=l.index('2',first+1)
 	print first
+
+#高亮搜索的一个例子
+
+staff_data='./staff_data'
+
+f=file(staff_data,'r')
+while True:
+	info=raw_input("input search info: ")
+	for i in f.readlines():
+		if info in i.strip():
+			page=i.strip().replace(info,'\033[1;32m'+info+'\033[0m')
+			print page
+
+	f.seek(0)
+
